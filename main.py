@@ -4,6 +4,7 @@ import time
 import random
 from bin import detected_fish
 from datetime import datetime 
+import ctypes
 
 print(f'{datetime.now().replace(microsecond=0)} || BOT loading. Please wait 5 second!')
 time.sleep(5)

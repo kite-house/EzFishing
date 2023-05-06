@@ -32,3 +32,6 @@ try:
 
 except Exception as error:
     print(f'{datetime.now().replace(microsecond=0)} || ERROR: {error} || Try restarting the applications!')
+    with open('crashlog.txt', 'a') as file:
+        file.write(f'{datetime.now().replace(microsecond=0)} || ERROR: {error}!')
+    time.sleep(5)

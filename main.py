@@ -3,7 +3,7 @@ import pyautogui
 import keyboard
 import time
 import random
-import detected_fish
+from bin import detected_fish
 from datetime import datetime 
 
 if not pyuac.isUserAdmin():
@@ -23,7 +23,7 @@ while True:
     pyautogui.mouseDown(button='left')
     time.sleep(15)
     pyautogui.mouseUp(button='left')
-    
+
     print(f'{datetime.now().replace(microsecond=0)} || EZ FISH!!!')
     pause = random.random().__round__(1) + random.random().__round__(1)
     if pause < 0.5:

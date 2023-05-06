@@ -27,7 +27,7 @@ def detected():
         number += 1
         img = frame()
 
-        template = cv2.imread('data/fish.png')
+        template = cv2.imread('bin/data/fish.png')
         w, h = template.shape[:-1]
 
         res = cv2.matchTemplate(img, template, cv2.TM_CCOEFF_NORMED)

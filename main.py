@@ -8,6 +8,11 @@ from datetime import datetime
 print(f'{datetime.now().replace(microsecond=0)} || BOT loading. Please wait 5 second!')
 time.sleep(5)
 
+u = ctypes.windll.LoadLibrary("user32.dll")
+pf = getattr(u, "GetKeyboardLayout")
+if hex(pf(0)) == '0x4190419':
+    keyboard.press_and_release('alt+shift')
+
 try:
 
     while True:

@@ -6,25 +6,22 @@ from datetime import datetime
 import keyboard
 import time
 
+def frame():
+    sct = mss.mss()
+    monitor = {'top': 200, 'left': 0, 'width': 1920, 'height': 600}
+    img = np.array(sct.grab(monitor))
+    img = np.flip(img[:, :, :3], 2)  # 1
+    img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)  # 2
+    return img
+
+
+
 def detected():
     start = datetime.now().replace(microsecond=0)
-    def frame():
-        sct = mss.mss()
-        monitor = {'top': 200, 'left': 0, 'width': 1920, 'height': 600}
-        img = np.array(sct.grab(monitor))
-        img = np.flip(img[:, :, :3], 2)  # 1
-        img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)  # 2
-        return img
-
-    number = 0
-    stop = 0
-    massiv = []
-    vektor = 'None'
-
+    stop, massiv, vektor = 0, [], 'None'
 
     while True:
         time.sleep(0.1)
-        number += 1
         img = frame()
 
         template = cv2.imread('bin/data/fish.png')

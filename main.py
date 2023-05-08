@@ -14,9 +14,8 @@ pf = getattr(u, "GetKeyboardLayout")
 if hex(pf(0)) == '0x4190419':
     keyboard.press_and_release('alt+shift')
 
-try:
-
-    while True:
+while True:
+    try:
         print(f'{datetime.now().replace(microsecond=0)} || Start catch fish!')
         keyboard.press_and_release('e')
         time.sleep(0.2)
@@ -35,9 +34,10 @@ try:
         time.sleep(0.1)
         keyboard.press_and_release('`')
         time.sleep(pause)
+        
+    except Exception as error:
+        print(f'{datetime.now().replace(microsecond=0)} || ERROR: {error} || Try restarting the applications!')
+        with open('crashlog.txt', 'a') as file:
+            file.write(f'{datetime.now().replace(microsecond=0)} || ERROR: {error}!')
+        time.sleep(5)
 
-except Exception as error:
-    print(f'{datetime.now().replace(microsecond=0)} || ERROR: {error} || Try restarting the applications!')
-    with open('crashlog.txt', 'a') as file:
-        file.write(f'{datetime.now().replace(microsecond=0)} || ERROR: {error}!')
-    time.sleep(5)
